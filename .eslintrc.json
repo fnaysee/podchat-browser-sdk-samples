@@ -15,6 +15,7 @@
   "ignorePatterns": ["dist", "node_modules", "webpack.*", "config/paths.js"],
   "env": {
     "browser": true,
+    "node": true,
     "es6": true
   },
   "extends": ["eslint:recommended", "prettier"],
