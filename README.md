@@ -51,13 +51,13 @@ src/js/manageContacts
 4- در صورتی که یوزر در لیست contact های ما باشد، میتوانیم thread ایجاد کنیم در غیر اینصورت ابتدا contact ایجاد کرده و سپس thread ایجاد میکنیم.
 
 
- ایجاد ترد با استفاده از متد createThread انجام میشود:
- src/js/manageThreads
- 
- برای مشاهده لیست تردها از متد getThreads استفاده میکنیم.
- 
+ ایجاد ترد با استفاده از متد createThread انجام میشود.
 
-
+ 
+ همچنین برای مشاهده لیست تردها از متد getThreads استفاده میکنیم:
+  src/js/manageThreads
+  
+ 
 5- برای ایجاد contact از متد addContacts استفاده می کنیم.
 
  src/js/manageContacts
