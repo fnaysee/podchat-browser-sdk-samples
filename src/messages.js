@@ -172,94 +172,94 @@ function Messages() {
     const app2 = document.querySelector('#root');
     app2.append(sendFileMessageFieldSet);
 
-    // document.getElementById("fileMessageBtn")
-    //     .addEventListener("click", function () {
-    //         var thread = document.getElementById("sendTextThread").value;
-    //         var message = document.getElementById("sendTextMessage").value;
-    //
-    //         manageMessages.sendTextMessage({
-    //             threadId: thread,
-    //             textMessage: message
-    //         }).then(uniqueId => console.log("7777", uniqueId));
-    //     });
+    document.getElementById("fileMessageBtn")
+        .addEventListener("click", function () {
+            var thread = document.getElementById("sendTextThread").value;
+            var message = document.getElementById("sendTextMessage").value;
+
+            manageMessages.sendTextMessage({
+                threadId: thread,
+                textMessage: message
+            }).then(uniqueId => console.log("7777", uniqueId));
+        });
 
     //-----------------------reply file message---------------------------
-    var breakLine6 = document.createElement('br');
-    var breakLine7 = document.createElement('br');
-    var breakLine8 = document.createElement('br');
-    var breakLine9 = document.createElement('br');
-    var threadIdLabel = document.createElement('label');
-    threadIdLabel.innerHTML = "Thread Id:";
-    threadIdLabel.className = "mr-10";
-    var replyThreadIdInput = document.createElement('input');
-    replyThreadIdInput.id = "threadInputId";
-    var messageIdLabel = document.createElement('label');
-    messageIdLabel.innerHTML = "Thread Id:";
-    messageIdLabel.className = "mr-10";
-    var messageIdInput = document.createElement('input');
-    messageIdInput.id = "threadInputId";
-    var replyMessageFieldSet = document.createElement('fieldset');
-    replyMessageFieldSet.className="fdl-style";
-    var replyMessageLegend = document.createElement('legend');
-    replyMessageLegend.innerHTML = "Reply File Message";
-    var userGroupHashLabel = document.createElement('label');
-    userGroupHashLabel.innerHTML = "Thread userGroupHash:";
-    userGroupHashLabel.className = "mr-10";
-    var userGroupHashInput = document.createElement('input');
-    userGroupHashInput.id = "groupHashInputId";
-    var messageTypeLabel = document.createElement('label');
-    messageTypeLabel.innerHTML = "Message Type:";
-    messageTypeLabel.className = "mt-10 mr-10";
-    var messageTypeDrpDown = document.createElement("select");
-    messageTypeDrpDown.className = "mt-10";
-    messageTypeDrpDown.id = "msgTypeDrpId";
-    var messageTypeArray = ["POD_SPACE_PICTURE", "POD_SPACE_VIDEO", "POD_SPACE_SOUND", "POD_SPACE_VOICE",
-        "POD_SPACE_FILE", "LINK", "STICKER"];
-    for (var j = 0; j < messageTypeArray.length; i++) {
-        var option2 = document.createElement("option");
-        option2.value = messageTypeArray[j];
-        messageTypeArray.appendChild(option2);
-    }
-    var selectFileLabel = document.createElement('label');
-    selectFileLabel.innerHTML = "select file:";
-    selectFileLabel.className = "mr-10";
-    var uploadFileInput = document.createElement("input");
-    uploadFileInput.type = "file";
-    uploadFileInput.id = "sendFileInput";
-    uploadFileInput.className = "mt-10";
-
-    var describeLabel = document.createElement('label');
-    describeLabel.innerHTML = "Description:";
-    describeLabel.className = "mr-10";
-
-    var txtBoxDescription2 = document.createElement('textarea');
-    txtBoxDescription2.id = "sendTextMessage";
-    txtBoxDescription2.className = "mr-10 mt-10";
-    var replyFileMessageBtn = document.createElement('button');
-    replyFileMessageBtn.innerHTML = "Reply File Message";
-    replyFileMessageBtn.id = "fileBtnId";
-    replyFileMessageBtn.className = "mt-10 mr-10";
-
-    replyMessageFieldSet.appendChild(replyMessageLegend);
-    replyMessageFieldSet.appendChild(threadIdLabel);
-    replyMessageFieldSet.appendChild(replyThreadIdInput);
-    replyMessageFieldSet.appendChild(breakLine6);
-    replyMessageFieldSet.appendChild(messageIdLabel);
-    replyMessageFieldSet.appendChild(messageTypeDrpDown);
-    replyMessageFieldSet.appendChild(breakLine7);
-    replyMessageFieldSet.appendChild(selectFileLabel);
-    replyMessageFieldSet.appendChild(uploadFileInput);
-    replyMessageFieldSet.appendChild(breakLine8);
-    replyMessageFieldSet.appendChild(describeLabel);
-    replyMessageFieldSet.appendChild(txtBoxDescription2);
-    replyMessageFieldSet.appendChild(breakLine9);
-    replyMessageFieldSet.appendChild(replyFileMessageBtn);
-
-
-
-    const app3 = document.querySelector('#root');
-    app3.append(replyMessageFieldSet);
-
+    // var breakLine6 = document.createElement('br');
+    // var breakLine7 = document.createElement('br');
+    // var breakLine8 = document.createElement('br');
+    // var breakLine9 = document.createElement('br');
+    // var threadIdLabel = document.createElement('label');
+    // threadIdLabel.innerHTML = "Thread Id:";
+    // threadIdLabel.className = "mr-10";
+    // var replyThreadIdInput = document.createElement('input');
+    // replyThreadIdInput.id = "threadInputId";
+    // var messageIdLabel = document.createElement('label');
+    // messageIdLabel.innerHTML = "Thread Id:";
+    // messageIdLabel.className = "mr-10";
+    // var messageIdInput = document.createElement('input');
+    // messageIdInput.id = "threadInputId";
+    // var replyMessageFieldSet = document.createElement('fieldset');
+    // replyMessageFieldSet.className="fdl-style";
+    // var replyMessageLegend = document.createElement('legend');
+    // replyMessageLegend.innerHTML = "Reply File Message";
+    // var userGroupHashLabel = document.createElement('label');
+    // userGroupHashLabel.innerHTML = "Thread userGroupHash:";
+    // userGroupHashLabel.className = "mr-10";
+    // var userGroupHashInput = document.createElement('input');
+    // userGroupHashInput.id = "groupHashInputId";
+    // var messageTypeLabel = document.createElement('label');
+    // messageTypeLabel.innerHTML = "Message Type:";
+    // messageTypeLabel.className = "mt-10 mr-10";
+    // var messageTypeDrpDown = document.createElement("select");
+    // messageTypeDrpDown.className = "mt-10";
+    // messageTypeDrpDown.id = "msgTypeDrpId";
+    // var messageTypeArray = ["POD_SPACE_PICTURE", "POD_SPACE_VIDEO", "POD_SPACE_SOUND", "POD_SPACE_VOICE",
+    //     "POD_SPACE_FILE", "LINK", "STICKER"];
+    // for (var j = 0; j < messageTypeArray.length; i++) {
+    //     var option2 = document.createElement("option");
+    //     option2.value = messageTypeArray[j];
+    //     messageTypeArray.appendChild(option2);
+    // }
+    // var selectFileLabel = document.createElement('label');
+    // selectFileLabel.innerHTML = "select file:";
+    // selectFileLabel.className = "mr-10";
+    // var uploadFileInput = document.createElement("input");
+    // uploadFileInput.type = "file";
+    // uploadFileInput.id = "sendFileInput";
+    // uploadFileInput.className = "mt-10";
+    //
+    // var describeLabel = document.createElement('label');
+    // describeLabel.innerHTML = "Description:";
+    // describeLabel.className = "mr-10";
+    //
+    // var txtBoxDescription2 = document.createElement('textarea');
+    // txtBoxDescription2.id = "sendTextMessage";
+    // txtBoxDescription2.className = "mr-10 mt-10";
+    // var replyFileMessageBtn = document.createElement('button');
+    // replyFileMessageBtn.innerHTML = "Reply File Message";
+    // replyFileMessageBtn.id = "fileBtnId";
+    // replyFileMessageBtn.className = "mt-10 mr-10";
+    //
+    // replyMessageFieldSet.appendChild(replyMessageLegend);
+    // replyMessageFieldSet.appendChild(threadIdLabel);
+    // replyMessageFieldSet.appendChild(replyThreadIdInput);
+    // replyMessageFieldSet.appendChild(breakLine6);
+    // replyMessageFieldSet.appendChild(messageIdLabel);
+    // replyMessageFieldSet.appendChild(messageTypeDrpDown);
+    // replyMessageFieldSet.appendChild(breakLine7);
+    // replyMessageFieldSet.appendChild(selectFileLabel);
+    // replyMessageFieldSet.appendChild(uploadFileInput);
+    // replyMessageFieldSet.appendChild(breakLine8);
+    // replyMessageFieldSet.appendChild(describeLabel);
+    // replyMessageFieldSet.appendChild(txtBoxDescription2);
+    // replyMessageFieldSet.appendChild(breakLine9);
+    // replyMessageFieldSet.appendChild(replyFileMessageBtn);
+    //
+    //
+    //
+    // const app3 = document.querySelector('#root');
+    // app3.append(replyMessageFieldSet);
+    //
     // document.getElementById("replyFileMessageBtn")
     //     .addEventListener("click", function () {
     //         var thread = document.getElementById("sendTextThread").value;
