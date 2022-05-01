@@ -12,10 +12,9 @@ function AddContact() {
         "ahmad moghani"];
 
     var addFieldSet = document.createElement('fieldset');
-    addFieldSet.style.width="50%";
-    addFieldSet.style.height="70px";
+    addFieldSet.className="fdl-style";
     var addLegend = document.createElement('legend');
-    addLegend.innerHTML = "add Contact"
+    addLegend.innerHTML = "Add Contact"
     addFieldSet.appendChild(addLegend);
 
     var lbl = document.createElement('label');

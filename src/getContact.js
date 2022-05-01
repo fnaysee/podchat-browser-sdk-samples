@@ -1,13 +1,12 @@
 import {manageContacts} from "./js/manageContacts";
+
 function GetContact() {
     var myParent = document.body;
     const array = [];
-
     var addFieldSet = document.createElement('fieldset');
-    addFieldSet.style.width="50%";
-    addFieldSet.style.height="70px";
+    addFieldSet.className="fdl-style";
     var addLegend = document.createElement('legend');
-    addLegend.innerHTML = "get Contact"
+    addLegend.innerHTML = "Get Contacts";
     addFieldSet.appendChild(addLegend);
 
     var getContactDrp = document.createElement("select");
@@ -21,8 +20,8 @@ function GetContact() {
 
         manageContacts.getContacts().then(result => {
            result.map(item =>  array.push(item));
-        var option = document.createElement("option");
         for (var i = 0; i < array.length; i++) {
+            var option = document.createElement("option");
             option.id = array[i].id;
             option.value = array[i].firstName + " " + array[i].lastName;
             option.text = array[i].firstName + " " + array[i].lastName;
