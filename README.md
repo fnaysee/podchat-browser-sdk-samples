@@ -64,7 +64,7 @@ src/js/manageContacts
    
 5- برای ایجاد contact از متد addContacts استفاده می کنیم.
 
- src/js/manageContacts
+
 
 برای حذف contact از متد removeContacts استفاده می کنیم.
 
@@ -87,7 +87,6 @@ src/js/manageMessages
 
 8- برای فورارد کردن پیام id ترد و id پیام را در متد forwardMessage ست می کنیم:
 
-src/js/manageMessages
 
             
 9- برای ارسال پیام از نوع فایل علاوه بر id  ترد پراپرتی file  داریم که با فایلی که انتخاب میکنیم مقداردهی می شود.
@@ -95,8 +94,6 @@ src/js/manageMessages
 
 
 
-
-src/js/manageMessages
           
 
 
