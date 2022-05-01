@@ -3,10 +3,12 @@
 npm install podchat-browser --save
 
 برای ساخت ماژول chatAgent:
+
 var PodChat = require('podchat-browser');
 var chatAgent = new PodChat(params);
 
 با استفاده از متد getContacts لیست کانتکت ها رو دریافت میکنیم:
+
 
 chatAgent.getContacts({
                 count: 50,
@@ -16,6 +18,7 @@ chatAgent.getContacts({
             }) });
 
 در صورتی که یوزر در لیستcontact های ما باشد، میتوانیم thread ایجاد کنیم در غیر اینصورت ابتدا contact ایجاد کرده و سپس thread ایجاد میکنیم.
+
 
 برای ایجاد ترد:
 
