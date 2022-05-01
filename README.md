@@ -42,7 +42,8 @@ var PodChat = require('podchat-browser');
 var chatAgent = new PodChat(params);
 ```
 
-3- با استفاده از متد getContacts لیست کانتکت ها رو دریافت میکنیم. متد getContacts در فایل manageContacts و در آدرس زیر پیاده سازی شده است:
+3-  با استفاده از متد getContacts لیست کانتکت ها رو دریافت میکنیم.
+متد getContacts در فایل manageContacts و در آدرس زیر پیاده سازی شده است:
 src/js/manageContacts
 
 4- در صورتی که یوزر در لیست contact های ما باشد، میتوانیم thread ایجاد کنیم در غیر اینصورت ابتدا contact ایجاد کرده و سپس thread ایجاد میکنیم.
