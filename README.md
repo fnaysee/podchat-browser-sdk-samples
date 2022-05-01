@@ -1,7 +1,7 @@
 
 برای استفاده از متدهای سرویس پیام رسان ابتدا خط دستور زیر را بر روی پروژه ی خود نصب می نماییم.
 
-npm install podchat-browser --save
+```npm install podchat-browser --save```
 
 برای ساخت ماژول chatAgent:
 
@@ -66,6 +66,7 @@ chatAgent.getThreads({
             }, function (threadsResult) {
                 resolve(threadsResult.result.threads);
                 });
+                
 
 برای مشاهده history هر ترد، id ترد مورد نظر را به متد getHistory می دهیم:
 
@@ -76,7 +77,9 @@ chatAgent.getHistory({
             }, function (historyResult) {
                 resolve(JSON.stringify(historyResult.result.history));
             });
+            
 برای ارسال پیام بایستی id  ترد را داشته باشیم و چنانچه پیام ارسال تکست باشد messageType  را صفر ست میکنیم.
+
 
 
 chatAgent.sendTextMessage({
@@ -94,8 +97,10 @@ chatAgent.sendTextMessage({
                     console.log(result.uniqueId + " \t has been Seen!");
                 }
             });
+            
 
 برای فورارد کردن پیام id ترد و id پیام را در متد forwardMessage ست می کنیم:
+
  chatAgent.forwardMessage({
                 threadId: items.threadId,
                 messageIds: items.messageIds
@@ -110,7 +115,9 @@ chatAgent.sendTextMessage({
                     console.log(result.uniqueId);
                 }
             });
+            
 برای ارسال پیام از نوع فایل علاوه بر id  ترد پراپرتی file  داریم که با فایلی که انتخاب میکنیم مقداردهی می شود.
+
 
 
 
