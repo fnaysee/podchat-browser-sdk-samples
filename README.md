@@ -23,6 +23,7 @@ chatAgent.getContacts({
 
 برای ایجاد ترد:
 
+
 chatAgent.createThread({
                 type: 'NORMAL',
                 invitees: [
@@ -38,6 +39,7 @@ chatAgent.createThread({
 
 برای ایجاد contact:
 
+
 chatAgent.addContacts({
         firstName: items.firstName,
         lastName: items.lastName,
@@ -47,6 +49,7 @@ chatAgent.addContacts({
         console.log(result)
 
     برای حذف contact:
+    
 
   chatAgent.removeContacts({
             id: items.id
@@ -56,6 +59,7 @@ chatAgent.addContacts({
 
 برای مشاهده لیست تردها از متد getThreads استفاده میکنیم:
 
+
 chatAgent.getThreads({
                 count: 50,
                 offset: 0
@@ -64,6 +68,7 @@ chatAgent.getThreads({
                 });
 
 برای مشاهده history هر ترد، id ترد مورد نظر را به متد getHistory می دهیم:
+
 chatAgent.getHistory({
                 count: items.count,
                 offset: items.offset,
@@ -72,6 +77,7 @@ chatAgent.getHistory({
                 resolve(JSON.stringify(historyResult.result.history));
             });
 برای ارسال پیام بایستی id  ترد را داشته باشیم و چنانچه پیام ارسال تکست باشد messageType  را صفر ست میکنیم.
+
 
 chatAgent.sendTextMessage({
                 threadId: items.threadId,
@@ -105,6 +111,7 @@ chatAgent.sendTextMessage({
                 }
             });
 برای ارسال پیام از نوع فایل علاوه بر id  ترد پراپرتی file  داریم که با فایلی که انتخاب میکنیم مقداردهی می شود.
+
 
 
 chatAgent.sendFileMessage({
