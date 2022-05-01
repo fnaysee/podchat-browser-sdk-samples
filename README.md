@@ -73,6 +73,7 @@ src/js/manageContacts
               
 
 6- برای مشاهده history هر ترد، id ترد مورد نظر را به متد getHistory می دهیم:
+
  src/js/manageThreads
 
 
