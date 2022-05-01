@@ -55,7 +55,11 @@ src/js/manageContacts
 
  
  همچنین برای مشاهده لیست تردها از متد getThreads استفاده میکنیم:
-   src/js/manageThreads
+ 
+ 
+ src/js/manageThreads
+ 
+   
    
    
 5- برای ایجاد contact از متد addContacts استفاده می کنیم.
