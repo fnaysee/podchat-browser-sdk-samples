@@ -1,7 +1,9 @@
 
 برای استفاده از متدهای سرویس پیام رسان ابتدا خط دستور زیر را بر روی پروژه ی خود نصب می نماییم.
 
-```npm install podchat-browser --save```
+```
+npm install podchat-browser --save
+```
 
 برای ساخت ماژول chatAgent:
 
