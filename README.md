@@ -1,4 +1,8 @@
 
+در ابتدا برای اجرای پروژه، بعد از clone گرفتن دستور npm install رو اجرا کنید تا dependency های پروژه دانلود شود.
+
+سپس دستور npm run start رو اجرا کنید.
+
 برای استفاده از متدهای سرویس پیام رسان ابتدا خط دستور زیر را بر روی پروژه ی خود نصب می نماییم.
 
 ```
@@ -6,9 +10,10 @@ npm install podchat-browser --save
 ```
 
 برای ساخت ماژول chatAgent:
-
+```
 var PodChat = require('podchat-browser');
 var chatAgent = new PodChat(params);
+```
 
 با استفاده از متد getContacts لیست کانتکت ها رو دریافت میکنیم:
 
