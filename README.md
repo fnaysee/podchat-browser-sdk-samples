@@ -1,97 +1,128 @@
-# 📦 webpack Boilerplate
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+برای استفاده از متدهای سرویس پیام رسان ابتدا خط دستور زیر را بر روی پروژه ی خود نصب نمایید.
+npm install podchat-browser --save
 
-Sensible webpack 5 boilerplate using Babel, PostCSS and Sass.
+برای ساخت ماژول chatAgent:
+var PodChat = require('podchat-browser');
+var chatAgent = new PodChat(params);
 
-## Installation
+با استفاده از متد getContacts لیست کانتکت ها رو دریافت میکنیم:
 
-Clone this repo and npm install.
+chatAgent.getContacts({
+                count: 50,
+                offset: 0
+            }, function (result) {
+                resolve(result.result.contacts)
+            }) });
 
-```bash
-npm i
-```
+در صورتی که یوزر در لیستcontact های ما باشد، میتوانیم thread ایجاد کنیم در غیر اینصورت ابتدا contact ایجاد کرده و سپس thread ایجاد میکنیم.
 
-## Usage
+برای ایجاد ترد:
 
-### Development server
+chatAgent.createThread({
+                type: 'NORMAL',
+                invitees: [
+                    {
+                        id: items.id,
+                        idType: 'TO_BE_USER_CONTACT_ID'
+                    }]
+            }, function (createThreadResult) {
+                if (!createThreadResult.hasError && createThreadResult.result.thread.id > 0) {
+                    p2pThreadId = createThreadResult.result.thread.id;
+                }
+            })
 
-```bash
-npm start
-```
+برای ایجاد contact:
 
-You can view the development server at `localhost:8080`.
+chatAgent.addContacts({
+        firstName: items.firstName,
+        lastName: items.lastName,
+        cellphoneNumber: items.cellphoneNumber,
+        email: items.email
+    }, function (result) {
+        console.log(result)
 
-### Production build
+    برای حذف contact:
 
-```bash
-npm run build
-```
+  chatAgent.removeContacts({
+            id: items.id
+        }, function (result) {
+            console.log(result);
+        });
 
-> Note: Install [http-server](https://www.npmjs.com/package/http-server) globally to deploy a simple server.
+برای مشاهده لیست تردها از متد getThreads استفاده میکنیم:
 
-```bash
-npm i -g http-server
-```
+chatAgent.getThreads({
+                count: 50,
+                offset: 0
+            }, function (threadsResult) {
+                resolve(threadsResult.result.threads);
+                });
 
-You can view the deploy by creating a server in `dist`.
+برای مشاهده history هر ترد، id ترد مورد نظر را به متد getHistory می دهیم:
+chatAgent.getHistory({
+                count: items.count,
+                offset: items.offset,
+                threadId: items.threadId
+            }, function (historyResult) {
+                resolve(JSON.stringify(historyResult.result.history));
+            });
+برای ارسال پیام بایستی id  ترد را داشته باشیم و چنانچه پیام ارسال تکست باشد messageType  را صفر ست میکنیم.
 
-```bash
-cd dist && http-server
-```
+chatAgent.sendTextMessage({
+                threadId: items.threadId,
+                textMessage: items.textMessage,
+                messageType: 0
+            }, {
+                onSent: function (result) {
+                    console.log(result.uniqueId + " \t has been Sent!");
+                },
+                onDeliver: function (result) {
+                    console.log(result.uniqueId + " \t has been Delivered!");
+                },
+                onSeen: function (result) {
+                    console.log(result.uniqueId + " \t has been Seen!");
+                }
+            });
 
-## Features
+برای فورارد کردن پیام id ترد و id پیام را در متد forwardMessage ست می کنیم:
+ chatAgent.forwardMessage({
+                threadId: items.threadId,
+                messageIds: items.messageIds
+            }, {
+                onSent: function (result) {
+                   console.log(result.uniqueId);
+                },
+                onDeliver: function (result) {
+                   console.log(result.uniqueId);
+                },
+                onSeen: function (result) {
+                    console.log(result.uniqueId);
+                }
+            });
+برای ارسال پیام از نوع فایل علاوه بر id  ترد پراپرتی file  داریم که با فایلی که انتخاب میکنیم مقداردهی می شود.
 
-- [webpack](https://webpack.js.org/)
-- [Babel](https://babeljs.io/)
-- [Sass](https://sass-lang.com/)
-- [PostCSS](https://postcss.org/)
 
-## Dependencies
+chatAgent.sendFileMessage({
+                threadId: threadId,
+                file: file,
+                content: caption,
+                systemMetadata: metadata
+            }, {
+                onSent: function (result) {
+                    console.log(result.uniqueId + " \t has been Sent!");
+                },
+                onDeliver: function (result) {
+                    console.log(result.uniqueId + " \t has been Delivered!");
+                },
+                onSeen: function (result) {
+                    console.log(result.uniqueId + " \t has been Seen!");
+                },
+                onFileUpload: function (result) {
+                    console.log('File Upload is done', result);
+                }
+          
 
-### webpack
 
-- [`webpack`](https://github.com/webpack/webpack) - Module and asset bundler.
-- [`webpack-cli`](https://github.com/webpack/webpack-cli) - Command line interface for webpack
-- [`webpack-dev-server`](https://github.com/webpack/webpack-dev-server) - Development server for webpack
-- [`webpack-merge`](https://github.com/survivejs/webpack-merge) - Simplify development/production configuration
-- [`cross-env`](https://github.com/kentcdodds/cross-env) - Cross platform configuration
 
-### Babel
 
-- [`@babel/core`](https://www.npmjs.com/package/@babel/core) - Transpile ES6+ to backwards compatible JavaScript
-- [`@babel/plugin-proposal-class-properties`](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties) - Use properties directly on a class (an example Babel config)
-- [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) - Smart defaults for Babel
-
-### Loaders
-
-- [`babel-loader`](https://webpack.js.org/loaders/babel-loader/) - Transpile files with Babel and webpack
-- [`sass-loader`](https://webpack.js.org/loaders/sass-loader/) - Load SCSS and compile to CSS
-  - [`sass`](https://www.npmjs.com/package/sass) - Node Sass
-- [`postcss-loader`](https://webpack.js.org/loaders/postcss-loader/) - Process CSS with PostCSS
-  - [`postcss-preset-env`](https://www.npmjs.com/package/postcss-preset-env) - Sensible defaults for PostCSS
-- [`css-loader`](https://webpack.js.org/loaders/css-loader/) - Resolve CSS imports
-- [`style-loader`](https://webpack.js.org/loaders/style-loader/) - Inject CSS into the DOM
-
-### Plugins
-
-- [`clean-webpack-plugin`](https://github.com/johnagan/clean-webpack-plugin) - Remove/clean build folders
-- [`copy-webpack-plugin`](https://github.com/webpack-contrib/copy-webpack-plugin) - Copy files to build directory
-- [`html-webpack-plugin`](https://github.com/jantimon/html-webpack-plugin) - Generate HTML files from template
-- [`mini-css-extract-plugin`](https://github.com/webpack-contrib/mini-css-extract-plugin) - Extract CSS into separate files
-- [`css-minimizer-webpack-plugin`](https://webpack.js.org/plugins/css-minimizer-webpack-plugin/) - Optimize and minimize CSS assets
-
-### Linters
-
-- [`eslint`](https://github.com/eslint/eslint) - Enforce styleguide across application
-- [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) - Implement prettier rules
-  - - [`prettier`](https://github.com/prettier/prettier) - Dependency for `prettier-webpack-plugin` plugin
-- [`eslint-import-resolver-webpack`](https://github.com/benmosher/eslint-plugin-import/tree/master/resolvers/webpack) - Throw exceptions for import/export in webpack
-
-## Author
-
-- [Tania Rascia](https://www.taniarascia.com)
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
