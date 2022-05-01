@@ -53,7 +53,9 @@ src/js/manageContacts
 
  ایجاد ترد با استفاده از متد createThread انجام میشود:
  src/js/manageThreads
+ 
  برای مشاهده لیست تردها از متد getThreads استفاده میکنیم.
+ 
 
 
 5- برای ایجاد contact از متد addContacts استفاده می کنیم.
