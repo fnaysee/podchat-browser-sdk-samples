@@ -103,7 +103,7 @@ function Threads() {
                 count: 50,
                 offset: 0,
                 threadId: selectedId
-            }).then(result => {
+            }).then((result) => {
                 for (var i = 0; i < result.length; i++) {
                     var label = document.createElement("label");
                     label.className = "history-item"

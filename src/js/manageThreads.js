@@ -35,7 +35,7 @@ function ManageThreads() {
                 offset: items.offset,
                 threadId: items.threadId
             }, function (historyResult) {
-                resolve(JSON.stringify(historyResult.result.history));
+                resolve(historyResult.result.history);
             });
         })
     }
