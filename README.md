@@ -43,9 +43,9 @@ var chatAgent = new PodChat(params);
 3-  با استفاده از متد getContacts لیست کانتکت ها رو دریافت میکنیم.
 
 متد getContacts در فایل manageContacts و در آدرس زیر پیاده سازی شده است:
-
+```
 src/js/manageContacts
-
+```
 4- در صورتی که یوزر در لیست contact های ما باشد، میتوانیم thread ایجاد کنیم در غیر اینصورت ابتدا contact ایجاد کرده و سپس thread ایجاد میکنیم.
 
 
@@ -54,9 +54,9 @@ src/js/manageContacts
  
  همچنین برای مشاهده لیست تردها از متد getThreads استفاده میکنیم:
  
- 
+ ```
  src/js/manageThreads
- 
+ ```
    
    
    
@@ -66,21 +66,21 @@ src/js/manageContacts
 
 برای حذف contact از متد removeContacts استفاده می کنیم.
 
-
+```
   src/js/manageContacts
-              
+```           
 
 6- برای مشاهده history هر ترد، id ترد مورد نظر را به متد getHistory می دهیم:
-
+```
  src/js/manageThreads
-
+```
 
             
 7- برای ارسال پیام بایستی id  ترد را داشته باشیم و چنانچه پیام ارسال تکست باشد messageType  را صفر ست میکنیم.
  ارسال پیام را با متد sendTextMessage انجام می دهیم. 
-
+```
 src/js/manageMessages
-
+```
 
             
 
