@@ -1,13 +1,5 @@
 var CONFIG = {
     token: '7814c7bd130d423eb168f064e6a8f152',
-    
-    // ActiveMQ Connection config
-    // queueHost: "10.56.16.25",
-    // queuePort: "61613",
-    // queueUsername: "root",
-    // queuePassword: "zalzalak",
-    // queueReceive: "queue-in-amjadi-stomp",
-    // queueSend: "queue-out-amjadi-stomp",
 
     // Neshan Map Api Token
     // mapApiKey: '8b77db18704aa646ee5aaea13e7370f4f88b9e8c',
