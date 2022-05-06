@@ -4,7 +4,7 @@ var CONFIG = {
     // token: '1a9d91ccb4d5431b89dd74f7e0bb417b', // talkyBOT
     // token: 'd10237d19ad24ba089f66bdfe3de9974', // Clasor
     // token: "b135febd870746f88032df84dfb01c85", // Clasor Test BOT
-    token: '7814c7bd130d423eb168f064e6a8f152',
+    token: 'e62e3781c0084d0ea03f3ddc9dc7468d',
 
     // Permenant Integration Tokens
     // token: "3dd6895c8dc64f93bcd43b58dcc2aab3", // Masoud Amjadi

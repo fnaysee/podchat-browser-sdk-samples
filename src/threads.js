@@ -104,11 +104,10 @@ function Threads() {
                 offset: 0,
                 threadId: selectedId
             }).then((result) => {
-                let arr =  JSON.stringify(result)
-                for (var i = 0; i < arr.length; i++) {
+                for (var i = 0; i < result.length; i++) {
                     var label = document.createElement("label");
                     label.className = "history-item"
-                    label.innerHTML = arr[i].message;
+                    label.innerHTML = result[i].message;
                     divElement.appendChild(label);
                     divElement.appendChild(breakLine);
                 }

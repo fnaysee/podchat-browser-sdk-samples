@@ -93,8 +93,8 @@ function Messages() {
             }).then(messageId => console.log("8888", messageId));
         });
 
-    // --------------------send file message--------------------------
 
+    var breakLine10 = document.createElement('br');
     var breakLine2 = document.createElement('br');
     var breakLine3 = document.createElement('br');
     var breakLine4 = document.createElement('br');
@@ -109,9 +109,10 @@ function Messages() {
     var sendFileMessageLegend = document.createElement('legend');
     sendFileMessageLegend.innerHTML = "Send File Message";
     var label3 = document.createElement('label');
-    label3.innerHTML = "Thread userGroupHash:";
-    label3.className = "mr-10";
+    label3.innerHTML = "Thread Group Hash:";
+    label3.className = "mt-10 mr-10";
     var GroupHashInput = document.createElement('input');
+    GroupHashInput.className = 'mt-10';
     GroupHashInput.id = "groupHashInputId";
     var label4 = document.createElement('label');
     label4.innerHTML = "Message Type:";
@@ -119,11 +120,12 @@ function Messages() {
     var messageTypeDrp = document.createElement("select");
     messageTypeDrp.className = "mt-10";
     messageTypeDrp.id = "msgTypeDrpId";
-    var messageType = ["POD_SPACE_PICTURE", "POD_SPACE_VIDEO", "POD_SPACE_SOUND", "POD_SPACE_VOICE",
+    const messageType = ["یک آیتم را انتخاب نمایید...","POD_SPACE_PICTURE", "POD_SPACE_VIDEO", "POD_SPACE_SOUND", "POD_SPACE_VOICE",
         "POD_SPACE_FILE", "LINK", "STICKER"];
     for (var i = 0; i < messageType.length; i++) {
         var option1 = document.createElement("option");
         option1.value = messageType[i];
+        option1.text = messageType[i];
         messageTypeDrp.appendChild(option1);
     }
     var label5 = document.createElement('label');
@@ -141,6 +143,7 @@ function Messages() {
     var txtBoxDescription = document.createElement('textarea');
     txtBoxDescription.id = "sendTextMessage";
     txtBoxDescription.className = "mr-10 mt-10";
+
     var fileMessageBtn = document.createElement('button');
     fileMessageBtn.innerHTML = "Send File Message";
     fileMessageBtn.id = "fileBtnId";
@@ -152,6 +155,9 @@ function Messages() {
     multiFileMessageBtn.className = "mt-10";
 
     sendFileMessageFieldSet.appendChild(sendFileMessageLegend);
+    sendFileMessageFieldSet.appendChild(label2);
+    sendFileMessageFieldSet.appendChild(threadInput);
+    sendFileMessageFieldSet.appendChild(breakLine10);
     sendFileMessageFieldSet.appendChild(label3);
     sendFileMessageFieldSet.appendChild(GroupHashInput);
     sendFileMessageFieldSet.appendChild(breakLine2);
@@ -168,108 +174,156 @@ function Messages() {
     sendFileMessageFieldSet.appendChild(multiFileMessageBtn);
 
 
-
     const app2 = document.querySelector('#root');
     app2.append(sendFileMessageFieldSet);
 
-    document.getElementById("fileMessageBtn")
+    document.getElementById("fileBtnId")
+        .addEventListener("click", function () {
+            var fileInput = document.getElementById("sendFileInput"),
+                image = fileInput.files[0],
+                content = document.getElementById("sendTextMessage").value,
+                thread = document.getElementById("threadInputId").value,
+                messageType = document.getElementById("msgTypeDrpId").value,
+                userGroupHash = document.getElementById("groupHashInputId").value;
+
+            manageMessages.sendFileMessage({
+                threadId: thread,
+                file: image,
+                content: content,
+                userGroupHash: userGroupHash,
+                messageType: messageType
+            }).then(result => console.log("55555", result));
+        });
+    document.getElementById("multiFileBtnId")
+        .addEventListener("click", function () {
+            var fileInput = document.getElementById("sendFileInput"),
+                image = fileInput.files[0],
+                content = document.getElementById("sendTextMessage").value,
+                thread = document.getElementById("threadInputId").value,
+                messageType = document.getElementById("msgTypeDrpId").value,
+                userGroupHash = document.getElementById("groupHashInputId").value;
+
+            for (var i = 1; i <= 5; i++) {
+                setTimeout(function () {
+                    manageMessages.sendFileMessage({
+                        threadId: thread,
+                        file: image,
+                        content: content,
+                        userGroupHash: userGroupHash,
+                        messageType: messageType
+                    }).then(result => console.log("6666", result))
+                })
+            }
+        })
+    //////////////reply file message///////////////
+
+    var breakLine6 = document.createElement('br');
+    var breakLine7 = document.createElement('br');
+    var breakLine8 = document.createElement('br');
+    var breakLine9 = document.createElement('br');
+    var breakLine11 = document.createElement('br');
+    var breakLine12 = document.createElement('br');
+    var threadIdLabel = document.createElement('label');
+    threadIdLabel.innerHTML = "Thread Id:";
+    threadIdLabel.className = "mr-10";
+    var replyThreadIdInput = document.createElement('input');
+    replyThreadIdInput.id = "threadInputId";
+    var messageIdLabel = document.createElement('label');
+    messageIdLabel.innerHTML = "message Id:";
+    messageIdLabel.className = "mt-10 mr-10";
+    var messageIdInput = document.createElement('input');
+    messageIdInput.id = "messageInputId";
+    messageIdInput.className = "mt-10";
+    var replyMessageFieldSet = document.createElement('fieldset');
+    replyMessageFieldSet.className="fdl-style";
+    var replyMessageLegend = document.createElement('legend');
+    replyMessageLegend.innerHTML = "Reply File Message";
+    var userGroupHashLabel = document.createElement('label');
+    userGroupHashLabel.innerHTML = "Thread user Group Hash:";
+    userGroupHashLabel.className = "mt-10 mr-10";
+    var userGroupHashInput = document.createElement('input');
+    userGroupHashInput.id = "groupHashInputId";
+    userGroupHashInput.className = "mt-10";
+    var messageTypeLabel = document.createElement('label');
+    messageTypeLabel.innerHTML = "Message Type:";
+    messageTypeLabel.className = "mt-10 mr-10";
+    var messageTypeDrpDown = document.createElement("select");
+    messageTypeDrpDown.className = "mt-10";
+    messageTypeDrpDown.id = "msgTypeDrpId";
+    const messageTypeArray = ["یک آیتم را انتخاب نمایید...", "TEXT" ,"POD_SPACE_PICTURE", "POD_SPACE_VIDEO", "POD_SPACE_SOUND", "POD_SPACE_VOICE",
+        "POD_SPACE_FILE", "LINK", "STICKER"];
+    for (var j = 0; j < messageTypeArray.length; j++) {
+        var option2 = document.createElement("option");
+        option2.value = messageTypeArray[j];
+        option2.text = messageTypeArray[j];
+        messageTypeDrpDown.appendChild(option2);
+    }
+    var selectFileLabel = document.createElement('label');
+    selectFileLabel.innerHTML = "select file:";
+    selectFileLabel.className = "mr-10";
+    var uploadFileInput = document.createElement("input");
+    uploadFileInput.type = "file";
+    uploadFileInput.id = "sendFileInput";
+    uploadFileInput.className = "mt-10";
+
+    var describeLabel = document.createElement('label');
+    describeLabel.innerHTML = "Description:";
+    describeLabel.className = "mr-10";
+
+    var txtBoxDescription2 = document.createElement('textarea');
+    txtBoxDescription2.id = "sendTextMessage";
+    txtBoxDescription2.className = "mr-10 mt-10";
+    var replyFileMessageBtn = document.createElement('button');
+    replyFileMessageBtn.innerHTML = "Reply File Message";
+    replyFileMessageBtn.id = "fileBtnId";
+    replyFileMessageBtn.className = "mt-10 mr-10";
+
+    replyMessageFieldSet.appendChild(replyMessageLegend);
+    replyMessageFieldSet.appendChild(threadIdLabel);
+    replyMessageFieldSet.appendChild(replyThreadIdInput);
+    replyMessageFieldSet.appendChild(breakLine6);
+    replyMessageFieldSet.appendChild(messageIdLabel);
+    replyMessageFieldSet.appendChild(messageIdInput);
+    replyMessageFieldSet.appendChild(breakLine7);
+    replyMessageFieldSet.appendChild(userGroupHashLabel);
+    replyMessageFieldSet.appendChild(userGroupHashInput);
+    replyMessageFieldSet.appendChild(breakLine8);
+    replyMessageFieldSet.appendChild(messageTypeLabel);
+    replyMessageFieldSet.appendChild(messageTypeDrpDown);
+    replyMessageFieldSet.appendChild(breakLine9);
+    replyMessageFieldSet.appendChild(selectFileLabel);
+    replyMessageFieldSet.appendChild(uploadFileInput);
+    replyMessageFieldSet.appendChild(breakLine11);
+    replyMessageFieldSet.appendChild(describeLabel);
+    replyMessageFieldSet.appendChild(txtBoxDescription2);
+    replyMessageFieldSet.appendChild(breakLine12);
+    replyMessageFieldSet.appendChild(replyFileMessageBtn);
+
+    const app3 = document.querySelector('#root');
+    app3.append(replyMessageFieldSet);
+
+    document.getElementById("replyFileMessageBtn")
         .addEventListener("click", function () {
             var thread = document.getElementById("sendTextThread").value;
             var message = document.getElementById("sendTextMessage").value;
 
-            manageMessages.sendTextMessage({
-                threadId: thread,
-                textMessage: message
+            var fileInput = document.getElementById("sendFileInput"),
+                image = fileInput.files[0],
+                content = document.getElementById("sendTextMessage").value,
+                threadId = document.getElementById("threadInputId").value,
+                repliedTo = document.getElementById("messageInputId").value,
+                messageType = document.getElementById("msgTypeDrpId").value,
+                userGroupHash = document.getElementById("groupHashInputId").value;
+
+            manageMessages.replyFileMessage({
+                threadId: threadId,
+                repliedTo: repliedTo,
+                file: image,
+                content: content,
+                userGroupHash: userGroupHash,
+                messageType: messageType
             }).then(uniqueId => console.log("7777", uniqueId));
         });
-
-    //-----------------------reply file message---------------------------
-    // var breakLine6 = document.createElement('br');
-    // var breakLine7 = document.createElement('br');
-    // var breakLine8 = document.createElement('br');
-    // var breakLine9 = document.createElement('br');
-    // var threadIdLabel = document.createElement('label');
-    // threadIdLabel.innerHTML = "Thread Id:";
-    // threadIdLabel.className = "mr-10";
-    // var replyThreadIdInput = document.createElement('input');
-    // replyThreadIdInput.id = "threadInputId";
-    // var messageIdLabel = document.createElement('label');
-    // messageIdLabel.innerHTML = "Thread Id:";
-    // messageIdLabel.className = "mr-10";
-    // var messageIdInput = document.createElement('input');
-    // messageIdInput.id = "threadInputId";
-    // var replyMessageFieldSet = document.createElement('fieldset');
-    // replyMessageFieldSet.className="fdl-style";
-    // var replyMessageLegend = document.createElement('legend');
-    // replyMessageLegend.innerHTML = "Reply File Message";
-    // var userGroupHashLabel = document.createElement('label');
-    // userGroupHashLabel.innerHTML = "Thread userGroupHash:";
-    // userGroupHashLabel.className = "mr-10";
-    // var userGroupHashInput = document.createElement('input');
-    // userGroupHashInput.id = "groupHashInputId";
-    // var messageTypeLabel = document.createElement('label');
-    // messageTypeLabel.innerHTML = "Message Type:";
-    // messageTypeLabel.className = "mt-10 mr-10";
-    // var messageTypeDrpDown = document.createElement("select");
-    // messageTypeDrpDown.className = "mt-10";
-    // messageTypeDrpDown.id = "msgTypeDrpId";
-    // var messageTypeArray = ["POD_SPACE_PICTURE", "POD_SPACE_VIDEO", "POD_SPACE_SOUND", "POD_SPACE_VOICE",
-    //     "POD_SPACE_FILE", "LINK", "STICKER"];
-    // for (var j = 0; j < messageTypeArray.length; i++) {
-    //     var option2 = document.createElement("option");
-    //     option2.value = messageTypeArray[j];
-    //     messageTypeArray.appendChild(option2);
-    // }
-    // var selectFileLabel = document.createElement('label');
-    // selectFileLabel.innerHTML = "select file:";
-    // selectFileLabel.className = "mr-10";
-    // var uploadFileInput = document.createElement("input");
-    // uploadFileInput.type = "file";
-    // uploadFileInput.id = "sendFileInput";
-    // uploadFileInput.className = "mt-10";
-    //
-    // var describeLabel = document.createElement('label');
-    // describeLabel.innerHTML = "Description:";
-    // describeLabel.className = "mr-10";
-    //
-    // var txtBoxDescription2 = document.createElement('textarea');
-    // txtBoxDescription2.id = "sendTextMessage";
-    // txtBoxDescription2.className = "mr-10 mt-10";
-    // var replyFileMessageBtn = document.createElement('button');
-    // replyFileMessageBtn.innerHTML = "Reply File Message";
-    // replyFileMessageBtn.id = "fileBtnId";
-    // replyFileMessageBtn.className = "mt-10 mr-10";
-    //
-    // replyMessageFieldSet.appendChild(replyMessageLegend);
-    // replyMessageFieldSet.appendChild(threadIdLabel);
-    // replyMessageFieldSet.appendChild(replyThreadIdInput);
-    // replyMessageFieldSet.appendChild(breakLine6);
-    // replyMessageFieldSet.appendChild(messageIdLabel);
-    // replyMessageFieldSet.appendChild(messageTypeDrpDown);
-    // replyMessageFieldSet.appendChild(breakLine7);
-    // replyMessageFieldSet.appendChild(selectFileLabel);
-    // replyMessageFieldSet.appendChild(uploadFileInput);
-    // replyMessageFieldSet.appendChild(breakLine8);
-    // replyMessageFieldSet.appendChild(describeLabel);
-    // replyMessageFieldSet.appendChild(txtBoxDescription2);
-    // replyMessageFieldSet.appendChild(breakLine9);
-    // replyMessageFieldSet.appendChild(replyFileMessageBtn);
-    //
-    //
-    //
-    // const app3 = document.querySelector('#root');
-    // app3.append(replyMessageFieldSet);
-    //
-    // document.getElementById("replyFileMessageBtn")
-    //     .addEventListener("click", function () {
-    //         var thread = document.getElementById("sendTextThread").value;
-    //         var message = document.getElementById("sendTextMessage").value;
-    //
-    //         manageMessages.sendTextMessage({
-    //             threadId: thread,
-    //             textMessage: message
-    //         }).then(uniqueId => console.log("7777", uniqueId));
-    //     });
 }
 const messages = new Messages();
 export {messages}
