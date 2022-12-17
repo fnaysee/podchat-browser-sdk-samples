@@ -1,8 +1,38 @@
-import {params} from "../js/params";
+import {params} from ".//params";
 var PodChat = require('podchat-browser');
 
-function ManageMessages() {
+function ManageServices() {
+    var p2pThreadId;
     var chatAgent = new PodChat(params);
+    this.addContacts = function(items){
+        chatAgent.addContacts({
+        firstName: items.firstName,
+        lastName: items.lastName,
+        cellphoneNumber: items.cellphoneNumber,
+        email: items.email
+    }, function (result) {
+        console.log(result)
+    });
+    }
+
+    this.removeContacts = function(items) {
+        chatAgent.removeContacts({
+            id: items.id
+        }, function (result) {
+            console.log(result);
+        });
+    }
+
+    this.getContacts = function(items) {
+        return new Promise((resolve, reject) => {
+            chatAgent.getContacts({
+                count: 50,
+                offset: 0
+            }, function (result) {
+                resolve(result.result.contacts)
+            })
+        })
+    }
     this.sendTextMessage = function (items) {
         return new Promise((resolve, reject) => {
             chatAgent.sendTextMessage({
@@ -109,12 +139,54 @@ function ManageMessages() {
             });
         })
     }
+    this.getThreads = function (items) {
+        return new Promise((resolve, reject) => {
+            chatAgent.getThreads({
+                count: 50,
+                offset: 0
+            }, function (threadsResult) {
+                resolve(threadsResult.result.threads);
+            });
+        })
+    }
+    this.addThread = function(items){
+        chatAgent.createThread({
+            type: 'NORMAL',
+            invitees: [
+                {
+                    id: items.id,
+                    idType: 'TO_BE_USER_CONTACT_ID'
+                }]
+        }, function (createThreadResult) {
+            if (!createThreadResult.hasError && createThreadResult.result.thread.id > 0) {
+                p2pThreadId = createThreadResult.result.thread.id;
+            }
+        })
+    }
+    this.getHistory = function (items) {
+        return new Promise((resolve, reject) => {
+            chatAgent.getHistory({
+                count: items.count,
+                offset: items.offset,
+                threadId: items.threadId
+            }, function (historyResult) {
+                resolve(historyResult.result.history);
+            });
+        })
+    }
 }
-const manageMessages = new ManageMessages();
+const manageServices = new ManageServices();
 if(window) {
     if (!window.POD) {
         window.POD = {};
     }
-    window.POD.ManageMessages = manageMessages;
+    window.POD.ManageServices = manageServices;
 }
-export {manageMessages};
+export {manageServices};
+
+
+
+
+
+
+

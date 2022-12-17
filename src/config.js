@@ -1,10 +1,13 @@
 var CONFIG = {
+    env: 'main',
+    MAP_API_KEY: '8b77db18704aa646ee5aaea13e7370f4f88b9e8c',
+    CLIENT_ID: '17402682e932b46ff94816b757ed6b42d',
     // token: '1cfce37b60d4421db870e67dcfe407d9', // gameBOT
     // token: '567179f126d84277b8dced22599e0b82', // takiBOT
     // token: '1a9d91ccb4d5431b89dd74f7e0bb417b', // talkyBOT
     // token: 'd10237d19ad24ba089f66bdfe3de9974', // Clasor
     // token: "b135febd870746f88032df84dfb01c85", // Clasor Test BOT
-    token: '7814c7bd130d423eb168f064e6a8f152',
+    token: '818a26ebb3f5451ba1961878d78dcd5d.XzIwMjIxMg',
 
     // Permenant Integration Tokens
     // token: "3dd6895c8dc64f93bcd43b58dcc2aab3", // Masoud Amjadi

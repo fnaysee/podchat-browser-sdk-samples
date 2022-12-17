@@ -38,3 +38,50 @@
   width: 95%;
   margin-top:25px;
 }
+.tbl-getThreads{
+  text-align: right;
+  border:none;
+}
+.tbl-getThreads td{
+  border: none;
+  padding:7px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  position: relative;
+}
+.threads-content{
+  display: flex;
+  direction: rtl;
+  height: 500px;
+  border:1px solid #ccc;
+  text-align: right;
+}
+.threads-content div{
+  padding: 5px;
+}
+.rightPart{
+  flex-grow: 1;
+  overflow: scroll;
+  direction: ltr;
+}
+.leftPart{
+  flex-grow: 1;
+  border-right:1px solid #ccc;
+  overflow: scroll;
+  direction: ltr;
+  text-align: right;
+}
+.notifStyle{
+  width: 14px;
+  height: 12px;
+  border:1px solid red;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  background-color: red;
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  text-align: center;
+}
+

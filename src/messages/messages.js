@@ -1,6 +1,6 @@
-import { manageMessages } from "./js/manageMessages";
-import style from "./styles/index.scss";
-import {manageContacts} from "@/js/manageContacts";
+import { manageServices } from "../services/manageServices";
+import style from "../styles/index.scss";
+
 
 function Messages() {
 
@@ -41,7 +41,7 @@ function Messages() {
             var thread = document.getElementById("sendTextThread").value;
             var message = document.getElementById("sendTextMessage").value;
 
-            manageMessages.sendTextMessage({
+            manageServices.sendTextMessage({
                 threadId: thread,
                 textMessage: message
             }).then(uniqueId => console.log("7777", uniqueId));
@@ -87,7 +87,7 @@ function Messages() {
                 return Number(item);
             });
 
-            manageMessages.forwardMessage({
+            manageServices.forwardMessage({
                 threadId: Number(thread),
                 messageIds: messages instanceof Array ? messages : [ messages ],
             }).then(messageId => console.log("8888", messageId));
@@ -186,7 +186,7 @@ function Messages() {
                 messageType = document.getElementById("msgTypeDrpId").value,
                 userGroupHash = document.getElementById("groupHashInputId").value;
 
-            manageMessages.sendFileMessage({
+            manageServices.sendFileMessage({
                 threadId: thread,
                 file: image,
                 content: content,
@@ -205,7 +205,7 @@ function Messages() {
 
             for (var i = 1; i <= 5; i++) {
                 setTimeout(function () {
-                    manageMessages.sendFileMessage({
+                    manageServices.sendFileMessage({
                         threadId: thread,
                         file: image,
                         content: content,
@@ -315,7 +315,7 @@ function Messages() {
                 messageType = document.getElementById("msgTypeDrpId").value,
                 userGroupHash = document.getElementById("groupHashInputId").value;
 
-            manageMessages.replyFileMessage({
+            manageServices.replyFileMessage({
                 threadId: threadId,
                 repliedTo: repliedTo,
                 file: image,
